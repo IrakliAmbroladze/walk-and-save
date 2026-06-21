@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import { supabase } from "../config/supabase.js";
+import { emailRegex } from "../constants.js";
 
 export const register = async (req, res) => {
   try {
@@ -12,8 +13,6 @@ export const register = async (req, res) => {
     if (password !== confirmPassword) {
       return res.status(400).json({ message: "passwords do not match" });
     }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
       return res.status(400).json({
