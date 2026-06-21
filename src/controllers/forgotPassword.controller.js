@@ -1,5 +1,6 @@
 import { supabase } from "../config/supabase.js";
 import { emailRegex } from "../constants.js";
+import { sendRecoveryEmail } from "../utils/mailer.js";
 
 export const forgotPassword = async (req, res) => {
   try {
@@ -28,6 +29,8 @@ export const forgotPassword = async (req, res) => {
 
     const code = Math.floor(1000 + Math.random() * 9000);
     const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
+
+    await sendRecoveryEmail(email, code);
 
     const { error: updateError } = await supabase
       .from("users")
