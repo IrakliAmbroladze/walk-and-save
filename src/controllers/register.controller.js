@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import supabase from "../config/supabase.js";
+import { supabase } from "../config/supabase.js";
 
 export const register = async (req, res) => {
   try {
