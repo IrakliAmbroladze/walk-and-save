@@ -8,6 +8,7 @@ import { getUserData } from "../controllers/userData.controller.js";
 import { getUserDataById } from "../controllers/userData.controller.js";
 import { getWallet} from "../controllers/wallet.controller.js";
 import { getWalletById } from "../controllers/wallet.controller.js";
+import { getcontactUs } from "../controllers/contactUs.controller.js";
 
 const router = express.Router();
 
@@ -21,6 +22,7 @@ router.get("/user_data", getUserData);
 router.get("/user_data/:id", getUserDataById);
 router.get("/wallet", getWallet);
 router.get("/wallet/:id", getWalletById);
+router.get("/contactUs", getcontactUs);
 
 
 export default router;
